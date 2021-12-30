@@ -86,6 +86,7 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libqcompostprocbundle \
     libvolumelistener \
+    libldacBT_bco \
     libtinycompress
 
 # Audio configuration

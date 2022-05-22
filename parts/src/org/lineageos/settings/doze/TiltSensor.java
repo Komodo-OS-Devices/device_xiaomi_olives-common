@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (c) 2015 The CyanogenMod Project
  *               2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,10 +29,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class PickupSensor implements SensorEventListener {
+public class TiltSensor implements SensorEventListener {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "PickupSensor";
+    private static final String TAG = "TiltSensor";
 
     private static final int BATCH_LATENCY_IN_MS = 100;
     private static final int MIN_PULSE_INTERVAL_MS = 2500;
@@ -44,7 +44,7 @@ public class PickupSensor implements SensorEventListener {
 
     private long mEntryTimestamp;
 
-    public PickupSensor(Context context) {
+    public TiltSensor(Context context) {
         mContext = context;
         mSensorManager = mContext.getSystemService(SensorManager.class);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_TILT_DETECTOR);
@@ -67,7 +67,7 @@ public class PickupSensor implements SensorEventListener {
         }
 
         if (event.values[0] == 1) {
-            DozeUtils.launchDozePulse(mContext);
+            DozeUtils.wakeOrLaunchDozePulse(mContext);
         }
     }
 
